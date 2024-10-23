@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-white lg:bg-gray-100">
+    <div class="main flex h-screen w-full font-['Reg'] flex-col px-4 md:px-0 md:flex-row lg:overflow-x-hidden ">
+      <div class="flex justify-between items-center lg:hidden mobile">
+        <div class="logoWithName flex gap-4 items-center mt-10">
+          <img class="h-10 w-10" src="./assets/Logo.png" alt="logo" />
+          <h1 class="font-bold text-xl">Weather App</h1>
+        </div>
+        <button id="menu-btn" class="focus:outline-none mt-8">
+          <svg
+            class="w-8 h-8"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+          </svg>
+        </button>
+      </div>
+      <div id="mobile-menu" class="hidden flex-col items-center mt-4">
+        <div class="buttons flex flex-col items-center gap-2 justify-center">
+          <a
+            href="./index.html"
+            class="py-2 w-[80vw] md:w-[15vw] flex justify-center rounded-xl bg-gray-200 text-black"
+          >
+            Dashboard
+          </a>
+          <a
+            href="./tables.html"
+            class="py-2 w-[80vw] md:w-[15vw] flex justify-center rounded-xl lg:bg-gray-100 bg-black text-white"
+          >
+            Tables
+          </a>
+        </div>
+      </div>
+      <div class="left hidden lg:flex w-[25vw] h-full bg-white flex-col items-center">
+        <div class="logoWithName flex gap-4 items-center mt-10">
+          <img class="h-10 w-10" src="./assets/Logo.png" alt="logo" />
+          <h1 class="font-bold text-xl">Weather App</h1>
+        </div>
+        <div class="buttons flex flex-col items-center gap-2 justify-center mt-6">
+          <a href="./index.html" class="dashboard py-2 w-[15vw] flex justify-center rounded-xl bg-gray-200 text-black px-10">Dashboard</a>
+          <a href="./tables.html" class="tables py-2 flex justify-center w-[15vw] rounded-xl px-10 bg-black text-white">Tables</a>
+        </div>
+        <div class="weatherDetail flex flex-col gap-4 w-44 justify-center">
+          <div class="date mt-4"></div>
+          <div class="image-div w-full flex justify-center">
+            <img class="sideImg h-28 w-28" src="./assets/sun.png" alt="" />
+          </div>
+          <h1 class="Detail text-3xl"></h1>
+          <div class="flex gap-2 items-center">
+            <img class="h-6 w-6 object-cover" src="./assets/humidity.png" alt="" />
+            <h1 class="humidity text-sm text-gray-500"></h1>
+          </div>
+          <div class="flex gap-2 items-center">
+            <img class="h-6 w-6 object-cover" src="./assets/wind.png" alt="" />
+            <h1 class="wind text-sm text-gray-500"></h1>
+          </div>
+          <div class="flex gap-2 items-center">
+            <img class="h-6 w-6 object-cover" src="http://openweathermap.org/img/wn/01d@2x.png" alt="" />
+            <h1 class="description text-sm text-gray-500"></h1>
+          </div>
+        </div>
+      </div>
+      <div class="right w-full min-h-screen py-10 bg-white lg:bg-gray-100">
+        <div class="top flex gap-[10vw] justify-center">
+          <div class="inputDiv flex">
+            <input class="UserInput border border-gray-700 w-[60vw] md:w-[50vw] rounded-l-full h-10 px-4" type="text" placeholder="Enter City here" value="" />
+            <button class="search pl-4 w-16 bg-black h-10 flex justify-between items-center rounded-r-full">
+              <img class="w-5 h-5 object-cover" src="./assets/search.png" alt="" />
+            </button>
+          </div>
+          <div class="UserImage hidden lg:flex w-8 h-8 rounded-full flex-col justify-center items-center">
+            <img class="w-full h-full object-cover" src="./assets/User.jpg" alt="" />
+            <h1 class="w-20">Ali Hassan</h1>
+          </div>
+        </div>
+
+         <div class="sub-container flex flex-col items-center lg:flex-row lg:justify-center lg:items-start gap-2">
+          <div class="forecast-container w-1/2 flex flex-col gap-2 items-center p-6 mt-6">
+            <h2 class="text-xl font-bold mb-4 text-center">5-Day Temperature Forecast</h2>
+            <div class="forecast-filters mt-4 flex gap-4">
+              <button class="sort-asc px-4 py-2 bg-gray-200 rounded text-sm rounded-lg">Ascending</button>
+              <button class="sort-desc px-4 py-2 bg-gray-200 rounded text-sm rounded-lg">Descending</button>
+              <button class="filter-rain px-4 py-2 bg-gray-200 rounded text-sm rounded-lg">Rainy Days</button>
+              <button class="highest-temp px-4 py-2 bg-gray-200 rounded text-sm rounded-lg">Highest Temp</button>
+          </div>
+          
+            <table class="w-full border border-gray-300">
+              <thead>
+                <tr>
+                  <th class="border border-gray-300 px-4 py-2">Date</th>
+                  <th class="border border-gray-300 px-4 py-2">Temperature</th>
+                  <th class="border border-gray-300 px-4 py-2">Weather</th>
+                </tr>
+              </thead>
+              <tbody class="forecast-data">
+              </tbody>
+            </table>
+            <div class="pagination flex gap-4 mt-4">
+              <button class="prev-btn px-4 py-2 bg-gray-200 rounded">Previous</button>
+              <button class="next-btn px-4 py-2 bg-gray-200 rounded">Next</button>
+            </div>
+          </div>
+          <div class="chatbot w-full lg:w-1/2 p-6 mt-6 flex flex-col items-center">
+            <div id="chat-container" class="w-full">
+              <h1 class="text-xl font-bold text-center mb-6">Weather Chatbot</h1>
+              <div class="input-div flex w-full justify-center mb-4">
+                <input class="rounded-l-full px-4 py-2 w-[60vw] border border-black lg:w-[20vw] " type="text" id="user-input" placeholder="Ask about the weather...">
+                <button id="send-btn" class="bg-black text-white px-4 py-2 rounded-r-full">Send</button>
+              </div>
+              <div id="chatbox" class="chatbox flex flex-col gap-2 w-full p-4 h-[100px] overflow-y-auto bg-gray-100 rounded-lg"></div>
+            </div>
+          </div>
+          
+         </div>
+      
+      </div>
+    </div>
+    <script src="./tables.js"></script>
+  </body>
+</html>
